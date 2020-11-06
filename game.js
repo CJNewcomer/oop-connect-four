@@ -1,4 +1,5 @@
 import { Column } from './column.js';
+import { ColumnWinInspector } from './column-win-inspector.js';
 
 export class Game {
   constructor(player1Name, player2Name) {
@@ -10,6 +11,11 @@ export class Game {
     // console.log(this.columns);
   }
   getName() {
+    if (this.winnerNumber === 1) {
+      return `${this.player1Name} wins!`;
+    } else if (this.winnerNumber === 2) {
+        return `${this.player2Name} wins!`;
+    }
     if (this.winnerNumber === 3) {
       return `${this.player1Name} ties with ${this.player2Name}!`;
     }
@@ -25,11 +31,15 @@ export class Game {
     if (this.checkForTie()) {
       this.winnerNumber = 3;
     }
+    this.checkForColumnWin();
   }
   getTokenAt(row, column) {
     return this.columns[column].getTokenAt(row);
   }
   isColumnFull(column) {
+    if (this.winnerNumber === 1 || this.winnerNumber === 2) {
+      return true;
+    }
     return this.columns[column].isFull();
   }
   checkForTie() {
@@ -39,9 +49,8 @@ export class Game {
       } 
     }
     return true;
-    // const fullColumns = this.columns.map((ele) => {
-    //   return ele.isFull();
-    // })
-    // return (!fullColumns.find(false));
+  }
+  checkForColumnWin() {
+    
   }
 }
