@@ -1,5 +1,6 @@
 import { Column } from './column.js';
 import { ColumnWinInspector } from './column-win-inspector.js';
+import { RowWinInspector } from './row-win-inspector.js';
 
 export class Game {
   constructor(player1Name, player2Name) {
