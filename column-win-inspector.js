@@ -5,17 +5,18 @@ export class ColumnWinInspector {
   inspect() {
     let currentWinStreakPlayer = 0;
     let currentWinStreakCount = 0;
-    for (let i = 0; i < this.column.tokensLength; i++) {
+    for (let i = this.column.tokensLength - 1; i >= 0; i--) {
       const el = this.column.tokens[i];
+      if (currentWinStreakCount === 4) {
+        return currentWinStreakPlayer;
+      }
       if (!el) return 0;
-      else if (currentWinStreakPlayer !== el) {
+      if (currentWinStreakPlayer !== el) {
         currentWinStreakPlayer = el;
         currentWinStreakCount = 1;
-      } else {
-        currentWinStreakCount ++;
-        if (currentWinStreakCount === 4) {
-          return currentWinStreakPlayer;
-        }
+      }
+      else {
+        currentWinStreakCount++;
       }
     }
   }

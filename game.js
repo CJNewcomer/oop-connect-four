@@ -1,5 +1,6 @@
 import { Column } from './column.js';
 import { ColumnWinInspector } from './column-win-inspector.js';
+import { RowWinInspector } from './row-win-inspector.js';
 
 export class Game {
   constructor(player1Name, player2Name) {
@@ -33,6 +34,7 @@ export class Game {
     }
     if (this.winnerNumber === 0) {
       this.checkForColumnWin();
+      this.checkForRowWin();
     }
   }
   getTokenAt(row, column) {
@@ -60,5 +62,8 @@ export class Game {
         this.winnerNumber = result;
       };
     }
+  }
+  checkForRowWin() {
+    
   }
 }
