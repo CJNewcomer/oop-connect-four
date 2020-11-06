@@ -31,7 +31,9 @@ export class Game {
     if (this.checkForTie()) {
       this.winnerNumber = 3;
     }
-    this.checkForColumnWin();
+    if (this.winnerNumber === 0) {
+      this.checkForColumnWin();
+    }
   }
   getTokenAt(row, column) {
     return this.columns[column].getTokenAt(row);
@@ -51,6 +53,12 @@ export class Game {
     return true;
   }
   checkForColumnWin() {
-    
+    for (let i = 0; i < this.columns.length; i++) {
+      const column = this.columns[i];
+      const result = new ColumnWinInspector(column).inspect();
+      if (result === 1 || result === 2) {
+        this.winnerNumber = result;
+      };
+    }
   }
 }

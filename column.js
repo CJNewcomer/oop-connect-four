@@ -1,6 +1,7 @@
 export class Column {
   constructor() {
     this.tokens = [null, null, null, null, null, null];
+    this.tokensLength = 6;
   }
   add(playerNumber) {
     for (let i = this.tokens.length - 1; i >= 0; i--) {
