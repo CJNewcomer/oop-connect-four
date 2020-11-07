@@ -2,11 +2,18 @@ import { Column } from "./column";
 
 export class RowWinInspector {
   constructor(columns) {
-    this.columns = [new Column(), new Column(), new Column(), new Column()];
+    this.columns = columns;
   }
   inspect() {
-    for (let i = 0; i < 5; i++) {
-      const el = this.columns[i];
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 6; j++) {
+        const row = []
+        for (let k = 0; k < 4; k++) {
+          const column = columns[i + k];
+          row.push(column.tokens[j]);
+        }
+        
+      }
       
     }
   }
